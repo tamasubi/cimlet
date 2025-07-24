@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Címletbontó</title>
+</head>
+<body>
+    <h1>Címletbontó</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Írj be egy összeget:</label>
+        <input type="number" name="osszeg" required>
+        <button type="submit">Bontsuk fel!</button>
+    </form>
+
+    {% if eredmeny %}
+        <h2>Eredmény:</h2>
+        <ul>
+        {% for cimlet, darab in eredmeny.items %}
+            <li>{{ cimlet }} Ft × {{ darab }} db</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
